@@ -18,8 +18,11 @@ export default function Detail() {
 
   const {
     register,
+    formState,
+    formState: { isSubmitSuccessful },
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   useEffect(() => {
@@ -31,6 +34,12 @@ export default function Detail() {
 
     getPost();
   }, []);
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({ body: '', image: '', author: '' });
+    }
+  }, [formState, reset]);
 
   useEffect(() => {
     const getAllComments = async () => {
@@ -61,6 +70,8 @@ export default function Detail() {
   const commentHandler = async (data) => {
     await API.pushComment(data, id);
     setUpdate(!update);
+
+    alert('¡Comentario creado con éxito!');
   };
 
   return (

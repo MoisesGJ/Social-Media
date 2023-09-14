@@ -2,11 +2,13 @@ import { useForm } from 'react-hook-form';
 import './style.css';
 import { useState } from 'react';
 import CardPost from '../../components/CardPost';
+import { useNavigate } from 'react-router-dom';
 
 import API from '../../services/API';
 
 export default function Home() {
   const [preview, setPreview] = useState();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -14,11 +16,14 @@ export default function Home() {
     handleSubmit,
   } = useForm();
 
-  const savePost = async (data) =>
+  const savePost = async (data) => {
     await API.pushPost({
       ...data,
       tags: data.tags.split(' ').flat(),
     });
+
+    navigate('/');
+  };
 
   const handlerPreview = ({ target }) => {
     const name = target.name;
