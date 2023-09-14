@@ -15,7 +15,13 @@ export default function CardPost({ props, preview }) {
   return (
     <>
       <div className="card shadow-sm bg-body-tertiary rounded">
-        <img src={image} className="card-img-top" />
+        {preview ? (
+          <Link to={`detail/${preview}`}>
+            <img src={image} className="card-img-top" />
+          </Link>
+        ) : (
+          <img src={image} className="card-img-top" />
+        )}
         <div className="card-body">
           <h4 className="card-title fw-bold">{title}</h4>
           <small className="text-body-secondary">{author}</small>

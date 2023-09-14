@@ -92,6 +92,11 @@ export default function Detail() {
               Comentarios (
               {allComments?.filter((comment) => comment.idPost === id).length})
             </h4>
+            {errors.image && (
+              <div class="alert alert-danger" role="alert">
+                {errors.image.message}
+              </div>
+            )}
             <div
               className="card border-dark mb-3"
               style={{ background: 'transparent' }}
@@ -132,6 +137,11 @@ export default function Detail() {
                       style={{ background: 'transparent' }}
                       {...register('image', {
                         required: 'La imagen es requerida.',
+                        pattern: {
+                          value:
+                            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/,
+                          message: 'La imagen debe ser una URL válida.',
+                        },
                       })}
                     />
                   </div>
@@ -143,6 +153,7 @@ export default function Detail() {
                 </div>
               </form>
             </div>
+
             <div className="p-3">
               {allComments &&
                 allComments.map(

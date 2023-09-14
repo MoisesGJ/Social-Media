@@ -82,7 +82,7 @@ export default function Home() {
             />
             {filter === null && (
               <h6 className="text-body-secondary fw-bold text-center my-5">
-                Parece esa categoría no existe..
+                Parece que esa categoría no existe...
               </h6>
             )}
             <div className="d-flex flex-column gap-3">

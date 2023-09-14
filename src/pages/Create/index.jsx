@@ -52,11 +52,16 @@ export default function Home() {
                   })}
                 />
               </div>
-              {errors.title && <span className="">{errors.title.message}</span>}
-              <div className="form-floating mb-3">
+              {errors.title && (
+                <div class="alert alert-danger" role="alert">
+                  {errors.title.message}
+                </div>
+              )}
+              <span className="form-label fw-bold">Contenido</span>
+              <div className="form-floating mt-2 mb-3">
                 <textarea
                   className="form-control"
-                  placeholder="Leave a comment here"
+                  placeholder="Escribe un comentario..."
                   id="floatingTextarea2"
                   style={{ height: '100px' }}
                   {...register('content', {
@@ -64,10 +69,11 @@ export default function Home() {
                     onChange: (e) => handlerPreview(e),
                   })}
                 ></textarea>
-                <label htmlFor="floatingTextarea2">Contenido</label>
               </div>
               {errors.content && (
-                <span className="">{errors.content.message}</span>
+                <div class="alert alert-danger" role="alert">
+                  {errors.content.message}
+                </div>
               )}
               <div className="mb-3">
                 <label htmlFor="" className="form-label fw-bold">
@@ -87,7 +93,12 @@ export default function Home() {
                   })}
                 />
               </div>
-              {errors.image && <span className="">{errors.image.message}</span>}
+              {/* errors.image && <span className="">{errors.image.message}</span> */}
+              {errors.image && (
+                <div class="alert alert-danger" role="alert">
+                  {errors.image.message}
+                </div>
+              )}
               <div className="mb-3">
                 <label htmlFor="" className="form-label fw-bold">
                   Autor
@@ -102,7 +113,9 @@ export default function Home() {
                 />
               </div>
               {errors.author && (
-                <span className="">{errors.author.message}</span>
+                <div class="alert alert-danger" role="alert">
+                  {errors.author.message}
+                </div>
               )}
               <div className="mb-3">
                 <label htmlFor="" className="form-label fw-bold">
@@ -117,7 +130,11 @@ export default function Home() {
                   })}
                 />
               </div>
-              {errors.tags && <span className="">{errors.tags.message}</span>}
+              {errors.tags && (
+                <div class="alert alert-danger" role="alert">
+                  {errors.tags.message}
+                </div>
+              )}
 
               <div className="text-end">
                 <button type="submit" className="btn btn-dark btn-lg">
