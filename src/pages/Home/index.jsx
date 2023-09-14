@@ -85,15 +85,17 @@ export default function Home() {
                 Parece esa categoría no existe..
               </h6>
             )}
-            {posts &&
-              !filter &&
-              posts.map((post) => (
-                <CardPost key={post.id} props={post} preview={post.id} />
-              ))}
-            {filter &&
-              filter.map((post) => (
-                <CardPost key={post.id} props={post} preview={post.id} />
-              ))}
+            <div className="d-flex flex-column gap-3">
+              {posts &&
+                !filter &&
+                posts.map((post) => (
+                  <CardPost key={post.id} props={post} preview={post.id} />
+                ))}
+              {filter &&
+                filter.map((post) => (
+                  <CardPost key={post.id} props={post} preview={post.id} />
+                ))}
+            </div>
           </div>
           <div className="col-0 col-md-2"></div>
         </div>
